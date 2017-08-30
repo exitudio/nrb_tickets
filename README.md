@@ -1,4 +1,8 @@
 
+## Start Production Server
+```shell
+$npm start
+```
 
 ## Run React Dev
 Run develment process. It will start both client and server in parallel in order calling server with the same port.

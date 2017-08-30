@@ -1,0 +1,33 @@
+@import '../../../scss/Config.scss';
+.date-selection{
+    margin-top: 20px;
+    .title{
+        text-align: center;
+    }
+    .date-picker-wrapper{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .react-datepicker-wrapper{
+        padding: 20px;
+    }
+    button{
+        padding: 20px;
+        border: none;
+        background: none;
+        background-color: red;
+    }
+    .button{
+        @include addCustomTransition(color, background-color);
+        padding: 14px 26px;
+        cursor: pointer;
+        
+        background-color:$dark-base-color;
+        color:white;
+    }
+    .button:hover{
+        background-color: $light-base-color;
+    }
+    
+}

@@ -1,0 +1,34 @@
+.pie-chart-wrapper{
+    .head-title{
+        text-align: center;
+    }
+    .left-chart{
+        float:left;
+        width: 400px;
+    }
+    .right-description{
+        float:left;
+        width: 185px;
+        margin-top:40px;
+        .item{
+            display: flex;
+            align-items: center;
+            .item-color{
+                width:10px;
+                height:10px;
+                min-width: 10px;
+                float: left;
+            }
+            .description{
+                float: left;
+                padding: 5px;
+                font-size:12px;
+            }
+        }
+    }
+    .right-description:after{
+        display: table;
+        content: " ";
+        clear: both;
+    }
+}

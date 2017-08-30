@@ -1,0 +1,51 @@
+$container-xsmall-min-width : 550px;
+$container-small-min-width : 768px;
+$container-medium-min-width : 992px;
+$container-large-min-width : 1200px;
+
+$container-small-width : 750px;
+$container-medium-width : 970px;
+$container-large-width : 1170px;
+
+
+$base-color : #444;
+$dark-base-color : #0076ff;
+$light-base-color : #00aaff;
+$line-color : #ddd;
+$white-color: #fff;
+$light-gray-color: #eee;
+
+$menu-animate-time : .3s;
+@mixin addTransition($variableName) {
+    -webkit-transition: $variableName $menu-animate-time  ease-out ;
+    -moz-transition:    $variableName $menu-animate-time  ease-out ;
+    -o-transition:      $variableName $menu-animate-time  ease-out ;
+    transition:         $variableName $menu-animate-time  ease-out ;
+}
+
+@mixin addCustomTransition($argument...){
+    $transition: ();
+    @each $i in $argument {
+        $transition: append($transition, $i $menu-animate-time ease-out, comma );
+    }
+    -webkit-transition: $transition;
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    transition:         $transition;
+    //transition: height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+%background-base-image{
+    // background: url(http://www.stevensducks.com/images/nav_repeater.png) repeat;
+    border-bottom: 1px solid $light-base-color
+}
+
+%font-bold{
+    font-weight: bold;
+    font-family: "Trade Gothic W01",Arial,Helvetica,sans-serif;
+}
+
+%font-light{
+    font-family: "Chaparral W01",Georgia,Times,"Times New Roman",serif;
+}
+

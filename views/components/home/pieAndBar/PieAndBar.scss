@@ -1,0 +1,23 @@
+.pie-and-bar{
+    margin-top:40px;
+    .head-text{
+        text-align: center;
+        padding: 30px;
+    }
+
+    .chart-wrapper{
+        .left-pie{
+            float:left;
+            width: 585px;
+        }
+        .right-bar{
+            float:left;
+            width: 585px;
+        }
+    }
+    .chart-wrapper:after{
+        display: table;
+        content: " ";
+        clear: both;
+    }
+}

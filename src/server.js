@@ -26,7 +26,7 @@ initServices(app)
 //set fallback url to public/index.html
 const dirname = path.resolve() // for fixing empty path problem when using gulp
 
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(__dirname, '../build')))
 app.use(fallback('/public/index.html', { root: dirname }))
 
 // app.use(express.static(path.join(__dirname, 'public')))

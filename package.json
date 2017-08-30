@@ -10,7 +10,8 @@
     "dev": "npm-run-all --parallel watch:server watch:client",
     "dev-server": "webpack-dev-server --config ./config/webpack.config.js --inline --hot --history-api-fallback --host localhost",
     "watch:client": "webpack --config ./config/webpack.config.js --watch",
-    "watch:server": "nodemon \"./src/server.js\" --watch \"./src\" --exec babel-node"
+    "watch:server": "nodemon \"./src/server.js\" --watch \"./src\" --exec babel-node",
+    "start": "babel-node src/server.js"
   },
   "author": "EXIT",
   "license": "ISC",

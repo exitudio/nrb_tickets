@@ -48,3 +48,6 @@ SendEmail.send = function (mailOptions, onComplete, onError) {
 };
 
 module.exports = SendEmail;
+
+//lotusthaiweb@gmail.com
+//LoTuS5536&

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './SendEmail.scss'
 import axios from 'axios'
 import Dropdown from './dropdown/Dropdown'
@@ -36,10 +35,16 @@ export default class SendEmail extends React.Component {
     }
 
     onSubmit = e=>{
-        if( this.state.month === this.state.day === this.state.hour === this.state.minute === '*'){
+        e.preventDefault()
+        if( this.state.month === '*' &&
+            this.state.day === '*' &&
+            this.state.hour === '*' &&
+            this.state.minute === '*'){
             return alert('Please Select Subscribe Time')
         }
-        e.preventDefault()
+        if( !this.validateEmail(this.state.email) ){
+            return alert('Email is not valid!!!')
+        }
         var params = new URLSearchParams()
         params.append('month', this.state.month)
         params.append('day', this.state.day)
@@ -62,6 +67,10 @@ export default class SendEmail extends React.Component {
             ...this.state, email:e.target.value
         })
     }
+    validateEmail = email=>{
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        return re.test(email)
+      }
 
     render() {
         console.log('this.state:',this.state)

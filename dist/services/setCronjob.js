@@ -18,6 +18,7 @@ router.post('/setcronjob', function (req, res) {
     config.day = req.body.day;
     config.hour = req.body.hour;
     config.minute = req.body.minute;
+    config.email = req.body.email;
 
     //if user didn't set lower parameter, set them to the lowest value
     var stack = ['month', 'day', 'hour', 'minute'];
@@ -40,27 +41,32 @@ router.post('/setcronjob', function (req, res) {
 
     console.log('cron...', config.minute + ' ' + config.hour + ' ' + config.day + ' ' + config.month + ' *');
     cron.schedule(config.minute + ' ' + config.hour + ' ' + config.day + ' ' + config.month + ' *', function () {
-        var mailOptions = {
-            from: 'NRB Tickets System', // sender address
-            to: req.body.email,
-            subject: "Subscribe NRB ", // Subject line
-            text: 'Report from your subscription: ',
-            attachments: [{
-                filename: 'report.pdf',
-                path: pdfPath,
-                contentType: 'application/pdf'
-            }]
-            //html: '<b>Hello world ?</b>' // html body
-        };
-        sendEmailLib.send(mailOptions, function () {
-            console.log('sent email completed');
-        }, function () {
-            console.log('sent email fail');
-        });
-        console.log('cron called...', config.minute + ' ' + config.hour + ' ' + config.day + ' ' + config.month + ' *');
+        callSendEmail(config);
     });
     return res.status(200).json({
         status: 'complete!!!'
     });
 });
+
+function callSendEmail(config) {
+    console.log('___ call send email :', config);
+    var mailOptions = {
+        from: 'NRB Tickets System', // sender address
+        to: config.email,
+        subject: "Subscribe NRB ", // Subject line
+        text: 'Report from your subscription: ',
+        attachments: [{
+            filename: 'report.pdf',
+            path: pdfPath,
+            contentType: 'application/pdf'
+        }]
+        //html: '<b>Hello world ?</b>' // html body
+    };
+    sendEmailLib.send(mailOptions, function () {
+        console.log('sent email completed');
+    }, function () {
+        console.log('sent email fail');
+    });
+    console.log('cron called...', config.minute + ' ' + config.hour + ' ' + config.day + ' ' + config.month + ' *');
+}
 module.exports = router;

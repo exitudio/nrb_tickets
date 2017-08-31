@@ -45,7 +45,13 @@ app.listen(port, listening);
 //set fallback url to public/index.html
 var dirname = _path2.default.resolve(); // for fixing empty path problem when using gulp
 
-app.use(_express2.default.static(_path2.default.join(__dirname, '../build')));
+
+console.log('process.env.NODE_ENV:', app.get('env'));
+if (app.get('env') === 'development') {
+  app.use(_express2.default.static(_path2.default.join(__dirname, '../public')));
+} else {
+  app.use(_express2.default.static(_path2.default.join(__dirname, '../build')));
+}
 app.use((0, _expressHistoryApiFallback2.default)('/public/index.html', { root: dirname }));
 
 // app.use(express.static(path.join(__dirname, 'public')))

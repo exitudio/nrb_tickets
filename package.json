@@ -4,15 +4,14 @@
   "description": "boilerplate react, redux, node server",
   "main": "index.js",
   "scripts": {
-    "production:client": "webpack -p --config ./config/webpack.production.config.js",
-    "production:server": "babel src -d dist",
-    "start": "node dist/server.js",
+    "build": "babel src -d dist && webpack -p --config ./config/webpack.production.config.js",
+    "start": "NODE_ENV=production node dist/server.js",
     "test": "jest --coverage",
     "watch:test": "npm test -- --watch",
     "dev": "npm-run-all --parallel watch:server watch:client",
     "dev-server": "webpack-dev-server --config ./config/webpack.config.js --inline --hot --history-api-fallback --host localhost",
     "watch:client": "webpack --config ./config/webpack.config.js --watch",
-    "watch:server": "\"./src/server.js\" --watch \"./src\" --exec babel-node"
+    "watch:server": "nodemon \"./src/server.js\" --watch \"./src\" --exec babel-node"
   },
   "author": "EXIT",
   "license": "ISC",
